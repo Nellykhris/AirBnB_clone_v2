@@ -17,7 +17,7 @@ class FileStorage:
             for key, value in self.__objects.items():
                 if isinstance(value, cls):
                     new_dict[key] = value
-        return new_dict
+            return new_dict
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -42,19 +42,19 @@ class FileStorage:
         from models.amenity import Amenity
         from models.review import Review
 
-    classes = {
-            'BaseModel': BaseModel, 'User': User, 'Place': Place,
-            'State': State, 'City': City, 'Amenity': Amenity,
-            'Review': Review
-            }
-    try:
-        temp = {}
-        with open(Filestorage.__filr_path, 'r') as f:
-            temp = json.load(f)
-            for key, val in temp.items():
-                self.all()[key] = classes[val['__class__']](**val)
-    except FileNotFoundError:
-        pass
+        classes = {
+                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                    'State': State, 'City': City, 'Amenity': Amenity,
+                    'Review': Review
+                  }
+        try:
+            temp = {}
+            with open(FileStorage.__file_path, 'r') as f:
+                temp = json.load(f)
+                for key, val in temp.items():
+                        self.all()[key] = classes[val['__class__']](**val)
+        except FileNotFoundError:
+            pass
 
     def delete(self, obj=None):
         """ Delete obj from __objects """
