@@ -45,7 +45,7 @@ class Place(BaseModel, Base):
             for review in allReviews.values():
                 if review.place_id == self.id:
                     reviewsList.append(review)
-                    return reviewsList
+            return reviewsList
 
         @property
         def amenities(self):
@@ -55,7 +55,7 @@ class Place(BaseModel, Base):
             for amenity in allAmenities.values():
                 if amenity.id in self.amenity_ids:
                     amenitiesList.append(amenity)
-            return amenitiesList
+                return amenitiesList
 
         @amenities.setter
         def amenities(self, value):
