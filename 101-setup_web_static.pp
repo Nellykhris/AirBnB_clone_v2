@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  package {'nginx':
+=======
+package {'nginx':
+>>>>>>> 830f3165d26ad344d8816074a4a526094e54309c
   ensure => installed
 }
 
